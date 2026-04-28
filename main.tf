@@ -25,3 +25,15 @@ resource "azurerm_storage_account" "storage020815" {
   account_replication_type = "LRS"
 
 }
+resource "azurerm_storage_container" "bbcontainer" {
+  name               = "bbcontainer"
+  storage_account_id = azurerm_storage_account.storage020815.id
+}
+
+resource "azurerm_storage_blob" "bbcontainer" {
+  name                   = "url_list"
+  storage_account_name   = "storage020815"
+  storage_container_name = "bbcontainer"
+  type                   = "Block"
+  source                 = "url_list.txt"
+}
