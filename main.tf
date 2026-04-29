@@ -20,3 +20,18 @@ resource "azurerm_virtual_network" "testvnet" {
     address_prefixes = local.subnets[1].address_prefixes
   }
 }
+
+resource "azurerm_subnet" "devsubnet" {
+  name                 = local.subnets[2].name
+  resource_group_name  = azurerm_resource_group.testrg.name
+  virtual_network_name = local.virtual_network.name
+  address_prefixes     = local.subnets[2].address_prefixes
+}
+
+resource "azurerm_subnet" "prodsubnet" {
+  name                 = local.subnets[3].name
+  resource_group_name  = azurerm_resource_group.testrg.name
+  virtual_network_name = local.virtual_network.name
+  address_prefixes     = local.subnets[3].address_prefixes
+}
+
