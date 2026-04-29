@@ -11,12 +11,12 @@ resource "azurerm_virtual_network" "testvnet" {
   address_space       = ["10.0.0.0/16"]
 
   subnet {
-    name             = "websubnet"
-    address_prefixes = [local.subnet_prefix_id[0]]
+    name             = local.subnets[0].name
+    address_prefixes = local.subnets[0].address_prefixes
   }
 
   subnet {
-    name             = "appsubnet"
-    address_prefixes = [local.subnet_prefix_id[1]]
+    name             = local.subnets[1].name
+    address_prefixes = local.subnets[1].address_prefixes
   }
 }
